@@ -1,0 +1,12 @@
+<!-- src/app/pages/wizard/age.html -->
+<section class="step">
+  <app-step-header title="What is the recipient’s age range?" progress="100%"></app-step-header>
+  <div class="chip-group">
+    <button class="chip" (click)="pick('u18')">Under 18</button>
+    <button class="chip" (click)="pick('18-24')">18–24</button>
+    <button class="chip" (click)="pick('25-34')">25–34</button>
+    <button class="chip" (click)="pick('35-44')">35–44</button>
+    <button class="chip" (click)="pick('45-54')">45–54</button>
+    <button class="chip" (click)="pick('55plus')">55+</button>
+  </div>
+</section>

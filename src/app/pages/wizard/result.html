@@ -1,0 +1,8 @@
+<!-- src/app/pages/wizard/result.html -->
+<section class="step">
+  <h1 class="title">We recommend getting this as a gift:</h1>
+  <div class="container grid gap-4 max-w-xl">
+    <app-gift-card *ngFor="let it of items" [item]="it as any"></app-gift-card>
+  </div>
+  <a class="btn mt-6" routerLink="/">Start over</a>
+</section>
