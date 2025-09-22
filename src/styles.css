@@ -3,23 +3,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- App base ---------- */
+/* ---------- App base (Theme: Neo-Ink) ---------- */
 @layer base {
   :root {
-    /* Farge-variabler (enkle å tune) */
-    --bg-from: #0b1220; /* slate-900-ish */
-    --bg-via: #0f172a; /* slate-900 */
-    --bg-to: #0b1220;
+    --bg-from: #07111a; /* dyp blekk-blå */
+    --bg-via: #0a1622;
+    --bg-to: #07111a;
 
-    --grad-1: #ec4899; /* pink-500 */
-    --grad-2: #a855f7; /* purple-500 */
-    --grad-3: #7c3aed; /* violet-600 */
+    --ink-1: #0b2030;
+    --ink-2: #0e2638;
 
-    --accent-1: #38bdf8; /* sky-400 */
-    --accent-2: #6366f1; /* indigo-500 */
+    /* Ny primærgradient: teal -> cyan -> azure */
+    --grad-1: #14b8a6; /* teal-500 */
+    --grad-2: #06b6d4; /* cyan-500 */
+    --grad-3: #3b82f6; /* blue-500 */
 
-    --card-bg: rgba(30, 41, 59, 0.7); /* slate-800/70 */
-    --card-br: #334155; /* slate-700 */
+    /* Sekundær: amber highlight */
+    --accent-1: #f59e0b; /* amber-500 */
+    --accent-2: #f97316; /* orange-500 */
+
+    --card-bg: color-mix(in oklab, var(--ink-2) 84%, transparent);
+    --card-br: #1f2b3a;
   }
 
   html,
@@ -29,125 +33,129 @@
   body {
     @apply antialiased text-slate-100;
     background: radial-gradient(
-        1200px 600px at 50% -10%,
-        color-mix(in oklab, var(--grad-2) 10%, transparent) 0%,
+        900px 400px at 10% 0%,
+        color-mix(in oklab, var(--grad-2) 12%, transparent) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        1000px 500px at 90% 10%,
+        color-mix(in oklab, var(--accent-1) 10%, transparent) 0%,
         transparent 60%
       ),
       linear-gradient(135deg, var(--bg-from), var(--bg-via) 50%, var(--bg-to));
   }
 
-  /* Optional bakgrunnsbilde over gradient – legg på .bg-scene på en wrapper */
-  .bg-scene {
+  /* Diskré grid-overlay for dybde */
+  .bg-grid {
     position: relative;
     isolation: isolate;
   }
-  .bg-scene::before {
+  .bg-grid::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.28;
-    filter: saturate(1.15);
-    z-index: -2;
-  }
-  /* Sett bilde via inline style: style="--scene:url('/assets/scene.jpg')" */
-  .bg-scene::before {
-    background-image: var(--scene, none);
-  }
-  .bg-scene::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      900px 400px at 50% 0%,
-      color-mix(in oklab, var(--grad-1) 12%, transparent) 0%,
-      transparent 60%
-    );
+    pointer-events: none;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(600px 600px at 50% 20%, black 40%, transparent 80%);
     z-index: -1;
+  }
+
+  /* Svak “noise” for film-look */
+  .noise::before {
+    content: '';
+    position: fixed;
+    inset: -100px;
+    z-index: -2;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.04'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
   }
 }
 
 /* ---------- Components ---------- */
 @layer components {
-  /* Layout helpers */
+  /* Layout */
   .container {
     @apply max-w-5xl mx-auto px-4;
   }
   .step {
-    @apply min-h-screen flex flex-col items-center justify-center gap-8 text-center;
+    @apply min-h-screen flex flex-col items-center justify-center gap-10 text-center;
   }
   .title {
-    @apply text-3xl sm:text-4xl md:text-5xl font-bold drop-shadow;
+    @apply text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow;
   }
   .subtitle {
     @apply text-sm opacity-80;
   }
 
-  /* Kort / panel */
+  /* Kort */
   .card {
-    @apply rounded-2xl p-6 shadow-lg border;
+    @apply rounded-2xl p-6 shadow-lg border backdrop-blur-md;
     background: var(--card-bg);
     border-color: var(--card-br);
-    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
   }
 
-  /* Primær knapp (stor, runde “capsule”-kanter – wizard-stil) */
+  /* Primær knapp – teal/cyan/blue */
   .btn {
-    @apply inline-flex items-center justify-center gap-2
-           font-semibold rounded-xl px-6 py-3 select-none
-           border border-white/10 transition;
-    background-image: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3));
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-2xl px-6 py-3
+           select-none border transition relative;
+    border-color: rgba(255, 255, 255, 0.08);
     color: white;
-    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.25);
+    background-image: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3));
+    box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
   }
   .btn:hover {
-    @apply opacity-90;
+    @apply opacity-95;
   }
   .btn:active {
     transform: translateY(1px) scale(0.99);
   }
   .btn:focus {
-    @apply outline-none ring-2 ring-pink-400/40;
+    @apply outline-none ring-2 ring-cyan-400/30;
+  }
+  .btn-sm {
+    @apply px-4 py-2 text-sm rounded-xl;
   }
 
-  /* Sekundær knapp (hul) */
+  /* Sekundær (outline glass) */
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold
-           border border-slate-600/70 text-slate-100/90 transition;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-semibold
+           border text-slate-100/90 transition;
+    border-color: rgba(255, 255, 255, 0.12);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
   }
   .btn-outline:hover {
-    @apply border-slate-400/70 text-white;
-  }
-  .btn-sm {
-    @apply px-4 py-2 text-sm rounded-lg;
+    @apply border-cyan-300/50 text-white;
   }
 
-  /* Wizard “chips” – store runde valgknapper */
+  /* Wizard chips – amber glow ved aktiv */
   .chip {
     @apply px-7 py-3 rounded-2xl text-sm sm:text-base font-semibold text-white cursor-pointer
-           border border-white/10 transition select-none;
-    background-image: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.25);
+           border transition select-none;
+    background-image: linear-gradient(90deg, var(--grad-2), var(--grad-3));
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.22);
   }
   .chip:hover {
-    @apply opacity-90;
+    @apply opacity-95;
   }
   .chip:focus {
-    @apply outline-none ring-2 ring-sky-300/40;
+    @apply outline-none ring-2 ring-cyan-300/40;
   }
   .chip[aria-pressed='true'],
   .chip[data-on='true'] {
-    background-image: linear-gradient(90deg, var(--grad-1), var(--grad-2));
-    @apply border-pink-300/30;
+    background-image: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    box-shadow: 0 8px 22px rgba(245, 158, 11, 0.28);
+    border-color: rgba(255, 255, 255, 0.16);
   }
   .chip-group {
     @apply flex flex-wrap items-center justify-center gap-4;
   }
 
-  /* Inputs / felt (til senere steg) */
+  /* Inputs (til senere) */
   .field {
     @apply text-left space-y-1;
   }
@@ -155,16 +163,17 @@
     @apply text-xs uppercase tracking-wide opacity-70;
   }
   .input {
-    @apply w-full rounded-xl bg-slate-900/70 border border-slate-700 px-3 py-2
-           outline-none focus:ring-2 focus:ring-sky-400/30;
+    @apply w-full rounded-xl bg-slate-900/70 border border-slate-700 px-3 py-2 outline-none focus:ring-2 focus:ring-cyan-400/30;
   }
 
-  /* Gave-kort */
+  /* Gift card */
   .gift-card {
     @apply card grid grid-cols-[96px,1fr] gap-4 items-center;
   }
   .gift-thumb {
-    @apply w-24 h-24 rounded-xl overflow-hidden border border-slate-700 bg-slate-900;
+    @apply w-24 h-24 rounded-xl overflow-hidden border bg-slate-900;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
   }
   .gift-title {
     @apply text-lg font-semibold;
@@ -173,25 +182,27 @@
     @apply flex flex-wrap gap-2 mt-2;
   }
   .badge {
-    @apply text-[11px] px-2 py-1 rounded-lg border border-slate-600 bg-slate-800/80;
+    @apply text-[11px] px-2 py-1 rounded-lg border bg-slate-800/80;
+    border-color: rgba(255, 255, 255, 0.12);
   }
   .price {
     @apply mt-2 font-medium;
   }
 
-  /* Progress (Step X of Y) */
+  /* Progress */
   .progress-wrap {
     @apply w-full max-w-xl mx-auto px-6;
   }
   .progress-rail {
-    @apply h-2 rounded-full bg-slate-700/60 overflow-hidden;
+    @apply h-2 rounded-full bg-slate-700/50 overflow-hidden;
   }
   .progress-bar {
-    @apply h-full bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600;
+    @apply h-full;
+    background-image: linear-gradient(90deg, var(--accent-1), var(--grad-2), var(--grad-3));
     width: var(--p, 33%);
   }
 
-  /* Deling / tomtilfeller */
+  /* Empty */
   .empty {
     @apply opacity-70 text-sm text-center;
   }
@@ -206,6 +217,6 @@
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
   .shadow-soft {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
   }
 }
