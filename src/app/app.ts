@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -6,11 +6,26 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <div class="min-h-screen">
-      <router-outlet />
+    <!-- Fullscreen, fixed video background -->
+    <div class="bgv">
+      <!-- bytt filnavn når du tester andre -->
+      <video
+        class="bgv__vid"
+        src="/videos/VBG2.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="/videos/VBG1.jpg"
+      ></video>
+      <div class="bgv__overlay"></div>
+    </div>
+
+    <!-- App UI over videoen -->
+    <div class="app-shell min-h-screen bg-grid noise">
+      <router-outlet></router-outlet>
     </div>
   `,
 })
-export class App {
-  protected readonly title = signal('match-a-gift');
-}
+export class App {}

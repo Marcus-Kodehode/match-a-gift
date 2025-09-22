@@ -1,16 +1,13 @@
-<!-- Fullscreen, fixed bakgrunnsvideo -->
+<!-- Fullscreen fixed video background -->
 <div class="bgv">
-  <video class="bgv__vid" src="/videos/VBG1.mp4" <!-- bytt filnavn fritt -->
-    autoplay muted loop playsinline preload="auto" poster="/videos/VBG1.jpg"
-    <!-- bruk .jpg/.png om du har, ellers fjern -->
-    >
+  <video class="bgv__vid" src="/videos/VBG1.mp4" <!-- swap file here when you test others -->
+    autoplay muted loop playsinline preload="auto" poster="/videos/VBG1.jpg" >
   </video>
 
   <div class="bgv__overlay"></div>
-  <!-- valgfri -->
 </div>
 
-<!-- resten av appen -->
-<div class="min-h-screen app-shell">
-  <router-outlet />
+<!-- All app UI lives above the video -->
+<div class="min-h-screen app-shell bg-grid noise">
+  <router-outlet></router-outlet>
 </div>
