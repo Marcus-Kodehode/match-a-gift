@@ -1,7 +1,7 @@
 import { GiftIdea } from '../types/models';
 
 export const GIFT_CATALOG: GiftIdea[] = [
-  // BIRTHDAY
+  // ---------------- BIRTHDAY (6)
   {
     id: 'bd-1',
     title: 'Smartwatch',
@@ -13,7 +13,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'bd-2',
     title: 'Gourmet chocolate box',
-    price: 249,
+    price: 250,
     tags: ['treat'],
     image: '',
     suitability: {
@@ -29,12 +29,36 @@ export const GIFT_CATALOG: GiftIdea[] = [
     image: '',
     suitability: { occasions: ['birthday'], ages: ['18-24', '25-34', '35-44'] },
   },
+  {
+    id: 'bd-4',
+    title: 'Bluetooth speaker',
+    price: 650,
+    tags: ['music', 'tech'],
+    image: '',
+    suitability: { occasions: ['birthday'], ages: ['18-24', '25-34', '35-44'] },
+  },
+  {
+    id: 'bd-5',
+    title: 'Cookbook + utensils bundle',
+    price: 400,
+    tags: ['kitchen', 'hobby'],
+    image: '',
+    suitability: { occasions: ['birthday'], ages: ['25-34', '35-44', '45-54'] },
+  },
+  {
+    id: 'bd-6',
+    title: 'Polaroid instant camera',
+    price: 990,
+    tags: ['photo', 'fun'],
+    image: '',
+    suitability: { occasions: ['birthday'], ages: ['18-24', '25-34'] },
+  },
 
-  // ANNIVERSARY
+  // ---------------- ANNIVERSARY (6)
   {
     id: 'an-1',
     title: 'Personalized photo book',
-    price: 399,
+    price: 400,
     tags: ['personal', 'memory'],
     image: '',
     suitability: { occasions: ['anniversary', 'romantic'] },
@@ -42,7 +66,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'an-2',
     title: 'Couple’s spa voucher',
-    price: 1190,
+    price: 1200,
     tags: ['relax', 'experience'],
     image: '',
     suitability: {
@@ -53,17 +77,41 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'an-3',
     title: 'Engraved wine glasses',
-    price: 499,
+    price: 500,
     tags: ['home', 'classy'],
     image: '',
     suitability: { occasions: ['anniversary', 'wedding', 'housewarming'] },
   },
+  {
+    id: 'an-4',
+    title: 'City break gift card (1 night)',
+    price: 2300,
+    tags: ['travel', 'couple'],
+    image: '',
+    suitability: { occasions: ['anniversary', 'romantic'] },
+  },
+  {
+    id: 'an-5',
+    title: 'Custom star map (special date)',
+    price: 700,
+    tags: ['art', 'personal'],
+    image: '',
+    suitability: { occasions: ['anniversary', 'romantic'] },
+  },
+  {
+    id: 'an-6',
+    title: 'Premium candle + diffuser set',
+    price: 650,
+    tags: ['home', 'relax'],
+    image: '',
+    suitability: { occasions: ['anniversary', 'romantic'] },
+  },
 
-  // GRADUATION
+  // ---------------- GRADUATION (6)
   {
     id: 'gr-1',
     title: 'Professional backpack',
-    price: 899,
+    price: 900,
     tags: ['work', 'practical'],
     image: '',
     suitability: { occasions: ['graduation'], ages: ['18-24', '25-34'] },
@@ -79,17 +127,45 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'gr-3',
     title: 'Fountain pen & notebook set',
-    price: 590,
+    price: 600,
     tags: ['office', 'classic'],
     image: '',
     suitability: { occasions: ['graduation'], ages: ['18-24', '25-34', '35-44'] },
   },
+  {
+    id: 'gr-4',
+    title: 'Laptop stand + mouse combo',
+    price: 650,
+    tags: ['workspace', 'ergonomics'],
+    image: '',
+    suitability: { occasions: ['graduation'], ages: ['18-24', '25-34'] },
+  },
+  {
+    id: 'gr-5',
+    title: 'LinkedIn Premium gift (1 mnd)',
+    price: 350,
+    tags: ['career', 'digital'],
+    image: '',
+    suitability: { occasions: ['graduation'], ages: ['18-24', '25-34'] },
+  },
+  {
+    id: 'gr-6',
+    title: 'Dress watch',
+    price: 1200,
+    tags: ['style', 'work'],
+    image: '',
+    suitability: {
+      occasions: ['graduation'],
+      ages: ['18-24', '25-34', '35-44'],
+      genders: ['male'],
+    },
+  },
 
-  // CHRISTMAS
+  // ---------------- CHRISTMAS (6)
   {
     id: 'xm-1',
     title: 'Cozy wool throw blanket',
-    price: 799,
+    price: 800,
     tags: ['home', 'winter'],
     image: '',
     suitability: {
@@ -100,7 +176,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'xm-2',
     title: 'Family board game',
-    price: 399,
+    price: 400,
     tags: ['family', 'fun'],
     image: '',
     suitability: { occasions: ['christmas'], ages: ['u18', '18-24', '25-34', '35-44'] },
@@ -108,17 +184,44 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'xm-3',
     title: 'Electric milk frother',
-    price: 349,
+    price: 350,
     tags: ['coffee', 'kitchen'],
     image: '',
     suitability: { occasions: ['christmas', 'housewarming'] },
   },
+  {
+    id: 'xm-4',
+    title: 'Wool socks bundle',
+    price: 250,
+    tags: ['cozy', 'winter'],
+    image: '',
+    suitability: {
+      occasions: ['christmas'],
+      ages: ['u18', '18-24', '25-34', '35-44', '45-54', '55plus'],
+    },
+  },
+  {
+    id: 'xm-5',
+    title: 'Hot chocolate set + mugs',
+    price: 300,
+    tags: ['treat', 'winter'],
+    image: '',
+    suitability: { occasions: ['christmas'], ages: ['u18', '18-24', '25-34', '35-44'] },
+  },
+  {
+    id: 'xm-6',
+    title: 'Smart light starter kit',
+    price: 950,
+    tags: ['home', 'tech'],
+    image: '',
+    suitability: { occasions: ['christmas', 'housewarming'], ages: ['18-24', '25-34', '35-44'] },
+  },
 
-  // VALENTINE
+  // ---------------- VALENTINE (6)
   {
     id: 'va-1',
     title: 'Rose bouquet & handwritten card',
-    price: 399,
+    price: 400,
     tags: ['romance', 'classic'],
     image: '',
     suitability: { occasions: ['valentine', 'romantic'] },
@@ -126,7 +229,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'va-2',
     title: 'Perfume / Eau de parfum',
-    price: 890,
+    price: 900,
     tags: ['fragrance'],
     image: '',
     suitability: { occasions: ['valentine', 'romantic'], genders: ['female'] },
@@ -134,17 +237,41 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'va-3',
     title: 'Leather bracelet/watch strap',
-    price: 590,
+    price: 600,
     tags: ['style'],
     image: '',
     suitability: { occasions: ['valentine', 'romantic'], genders: ['male'] },
   },
+  {
+    id: 'va-4',
+    title: 'Chocolate-covered strawberries kit',
+    price: 300,
+    tags: ['treat', 'DIY'],
+    image: '',
+    suitability: { occasions: ['valentine', 'romantic'] },
+  },
+  {
+    id: 'va-5',
+    title: 'Couple’s photo shoot voucher',
+    price: 1200,
+    tags: ['experience', 'memory'],
+    image: '',
+    suitability: { occasions: ['valentine', 'romantic'] },
+  },
+  {
+    id: 'va-6',
+    title: 'Heart pendant necklace',
+    price: 850,
+    tags: ['jewelry'],
+    image: '',
+    suitability: { occasions: ['valentine', 'romantic'], genders: ['female'] },
+  },
 
-  // MOTHER’S DAY
+  // ---------------- MOTHER’S DAY (6)
   {
     id: 'md-1',
     title: 'Spa gift set',
-    price: 549,
+    price: 550,
     tags: ['self-care'],
     image: '',
     suitability: { occasions: ['mothersday'], genders: ['female'] },
@@ -152,7 +279,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'md-2',
     title: 'Personalized necklace (initials)',
-    price: 749,
+    price: 750,
     tags: ['jewelry', 'personal'],
     image: '',
     suitability: { occasions: ['mothersday', 'romantic'], genders: ['female'] },
@@ -160,17 +287,41 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'md-3',
     title: 'Herb garden kit',
-    price: 299,
+    price: 300,
     tags: ['garden', 'home'],
     image: '',
     suitability: { occasions: ['mothersday', 'housewarming'] },
   },
+  {
+    id: 'md-4',
+    title: 'Silk sleep set (mask + scrunchies)',
+    price: 400,
+    tags: ['sleep', 'comfort'],
+    image: '',
+    suitability: { occasions: ['mothersday'], genders: ['female'] },
+  },
+  {
+    id: 'md-5',
+    title: 'Photo frame with family collage',
+    price: 350,
+    tags: ['memory', 'home'],
+    image: '',
+    suitability: { occasions: ['mothersday'] },
+  },
+  {
+    id: 'md-6',
+    title: 'Tea sampler + teapot',
+    price: 500,
+    tags: ['tea', 'relax'],
+    image: '',
+    suitability: { occasions: ['mothersday', 'housewarming'] },
+  },
 
-  // FATHER’S DAY
+  // ---------------- FATHER’S DAY (6)
   {
     id: 'fd-1',
     title: 'Whiskey stones & tumblers',
-    price: 399,
+    price: 400,
     tags: ['bar'],
     image: '',
     suitability: { occasions: ['fathersday', 'housewarming'], genders: ['male'] },
@@ -178,7 +329,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'fd-2',
     title: 'BBQ tool set',
-    price: 599,
+    price: 600,
     tags: ['outdoor', 'cooking'],
     image: '',
     suitability: { occasions: ['fathersday', 'housewarming'], genders: ['male'] },
@@ -186,7 +337,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'fd-3',
     title: 'Multi-tool pocket knife',
-    price: 349,
+    price: 350,
     tags: ['practical'],
     image: '',
     suitability: {
@@ -195,8 +346,36 @@ export const GIFT_CATALOG: GiftIdea[] = [
       ages: ['25-34', '35-44', '45-54'],
     },
   },
+  {
+    id: 'fd-4',
+    title: 'Craft beer tasting pack',
+    price: 350,
+    tags: ['beer', 'tasting'],
+    image: '',
+    suitability: {
+      occasions: ['fathersday'],
+      genders: ['male'],
+      ages: ['25-34', '35-44', '45-54', '55plus'],
+    },
+  },
+  {
+    id: 'fd-5',
+    title: 'Wireless car charger',
+    price: 450,
+    tags: ['auto', 'tech'],
+    image: '',
+    suitability: { occasions: ['fathersday', 'birthday'], genders: ['male'] },
+  },
+  {
+    id: 'fd-6',
+    title: 'Leather belt (classic)',
+    price: 700,
+    tags: ['style'],
+    image: '',
+    suitability: { occasions: ['fathersday', 'birthday'], genders: ['male'] },
+  },
 
-  // WEDDING
+  // ---------------- WEDDING (6)
   {
     id: 'wd-1',
     title: 'Premium bed linen set',
@@ -221,12 +400,36 @@ export const GIFT_CATALOG: GiftIdea[] = [
     image: '',
     suitability: { occasions: ['wedding', 'anniversary'] },
   },
+  {
+    id: 'wd-4',
+    title: 'Champagne flutes set',
+    price: 600,
+    tags: ['celebration', 'glassware'],
+    image: '',
+    suitability: { occasions: ['wedding', 'anniversary'] },
+  },
+  {
+    id: 'wd-5',
+    title: 'Serving board (acacia) + knives',
+    price: 750,
+    tags: ['kitchen', 'hosting'],
+    image: '',
+    suitability: { occasions: ['wedding', 'housewarming'] },
+  },
+  {
+    id: 'wd-6',
+    title: 'Personalized doormat (family name)',
+    price: 550,
+    tags: ['home', 'personal'],
+    image: '',
+    suitability: { occasions: ['wedding', 'housewarming'] },
+  },
 
-  // BABY SHOWER
+  // ---------------- BABY SHOWER (6)
   {
     id: 'bs-1',
     title: 'Baby clothing bundle (0–6m)',
-    price: 499,
+    price: 500,
     tags: ['baby'],
     image: '',
     suitability: { occasions: ['babyshower'], ages: ['25-34', '35-44'] },
@@ -234,7 +437,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'bs-2',
     title: 'Swaddle & blanket set',
-    price: 399,
+    price: 400,
     tags: ['baby', 'soft'],
     image: '',
     suitability: { occasions: ['babyshower'] },
@@ -242,17 +445,41 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'bs-3',
     title: 'Memory book: Baby’s first year',
-    price: 329,
+    price: 330,
     tags: ['keepsake'],
     image: '',
     suitability: { occasions: ['babyshower'] },
   },
+  {
+    id: 'bs-4',
+    title: 'Baby bath set (tub + towel)',
+    price: 650,
+    tags: ['bath', 'baby'],
+    image: '',
+    suitability: { occasions: ['babyshower'] },
+  },
+  {
+    id: 'bs-5',
+    title: 'Night light + white noise',
+    price: 550,
+    tags: ['sleep', 'nursery'],
+    image: '',
+    suitability: { occasions: ['babyshower'] },
+  },
+  {
+    id: 'bs-6',
+    title: 'Diaper caddy organizer',
+    price: 300,
+    tags: ['organize', 'nursery'],
+    image: '',
+    suitability: { occasions: ['babyshower'] },
+  },
 
-  // HOUSEWARMING
+  // ---------------- HOUSEWARMING (6)
   {
     id: 'hw-1',
     title: 'Scented candle set',
-    price: 349,
+    price: 350,
     tags: ['home', 'decor'],
     image: '',
     suitability: { occasions: ['housewarming', 'christmas'] },
@@ -260,7 +487,7 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'hw-2',
     title: 'Olive oil & balsamic gift set',
-    price: 449,
+    price: 450,
     tags: ['kitchen', 'gourmet'],
     image: '',
     suitability: { occasions: ['housewarming'] },
@@ -268,13 +495,37 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'hw-3',
     title: 'Indoor plant + pot',
-    price: 399,
+    price: 400,
     tags: ['green', 'decor'],
     image: '',
     suitability: { occasions: ['housewarming'] },
   },
+  {
+    id: 'hw-4',
+    title: 'Magnetic knife strip',
+    price: 500,
+    tags: ['kitchen', 'storage'],
+    image: '',
+    suitability: { occasions: ['housewarming'] },
+  },
+  {
+    id: 'hw-5',
+    title: 'Coasters (stone) set',
+    price: 250,
+    tags: ['home', 'table'],
+    image: '',
+    suitability: { occasions: ['housewarming'] },
+  },
+  {
+    id: 'hw-6',
+    title: 'Smart plug 2-pack',
+    price: 350,
+    tags: ['home', 'tech'],
+    image: '',
+    suitability: { occasions: ['housewarming'], ages: ['18-24', '25-34', '35-44'] },
+  },
 
-  // RETIREMENT
+  // ---------------- RETIREMENT (6)
   {
     id: 'rt-1',
     title: 'Travel carry-on suitcase',
@@ -294,13 +545,37 @@ export const GIFT_CATALOG: GiftIdea[] = [
   {
     id: 'rt-3',
     title: 'Hobby kit (painting/crafts)',
-    price: 590,
+    price: 600,
     tags: ['hobby', 'creative'],
     image: '',
     suitability: { occasions: ['retirement'] },
   },
+  {
+    id: 'rt-4',
+    title: 'Gardening tools set',
+    price: 700,
+    tags: ['garden', 'outdoor'],
+    image: '',
+    suitability: { occasions: ['retirement'], ages: ['55plus'] },
+  },
+  {
+    id: 'rt-5',
+    title: 'Travel toiletry organizer',
+    price: 350,
+    tags: ['travel', 'organize'],
+    image: '',
+    suitability: { occasions: ['retirement'], ages: ['45-54', '55plus'] },
+  },
+  {
+    id: 'rt-6',
+    title: 'Premium puzzle bundle',
+    price: 400,
+    tags: ['brain', 'indoor'],
+    image: '',
+    suitability: { occasions: ['retirement'], ages: ['55plus'] },
+  },
 
-  // ROMANTIC GIFT
+  // ---------------- ROMANTIC GIFT (6)
   {
     id: 'ro-1',
     title: 'Weekend getaway voucher',
@@ -324,5 +599,29 @@ export const GIFT_CATALOG: GiftIdea[] = [
     tags: ['jewelry'],
     image: '',
     suitability: { occasions: ['romantic', 'valentine'], genders: ['female'] },
+  },
+  {
+    id: 'ro-4',
+    title: 'Couple’s cooking class voucher',
+    price: 950,
+    tags: ['experience', 'food'],
+    image: '',
+    suitability: { occasions: ['romantic', 'anniversary', 'valentine'] },
+  },
+  {
+    id: 'ro-5',
+    title: 'Personalized print (coordinates/date)',
+    price: 600,
+    tags: ['art', 'personal'],
+    image: '',
+    suitability: { occasions: ['romantic', 'anniversary'] },
+  },
+  {
+    id: 'ro-6',
+    title: 'Massage oil set + candles',
+    price: 450,
+    tags: ['relax', 'intimate'],
+    image: '',
+    suitability: { occasions: ['romantic', 'valentine'] },
   },
 ];

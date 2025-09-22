@@ -1,13 +1,31 @@
 <section class="step">
   <h1 class="mb-8 title">We recommend getting this as a gift:</h1>
 
-  <div class="container">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-      <app-gift-card *ngFor="let it of items" [item]="it"></app-gift-card>
+  <!-- Kjønnsregel-melding -->
+  <div class="container" *ngIf="errorMsg; else listTpl">
+    <div class="text-center card">
+      <p class="text-slate-200">{{ errorMsg }}</p>
     </div>
-
     <div class="text-center">
-      <button class="mt-8 btn" (click)="restart()">Start over</button>
+      <button class="mt-6 btn" (click)="restart()">Start over</button>
     </div>
   </div>
+
+  <!-- Liste + paging -->
+  <ng-template #listTpl>
+    <div class="container">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <app-gift-card *ngFor="let it of items" [item]="it"></app-gift-card>
+      </div>
+
+      <div class="flex items-center justify-center gap-3 mt-6" *ngIf="allItems.length > pageSize">
+        <button class="btn-outline" (click)="showPrev()">Previous</button>
+        <button class="btn" (click)="showNext()">Show more</button>
+      </div>
+
+      <div class="text-center">
+        <button class="mt-6 btn-outline" (click)="restart()">Start over</button>
+      </div>
+    </div>
+  </ng-template>
 </section>
