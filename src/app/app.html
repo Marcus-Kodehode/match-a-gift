@@ -1,1 +1,16 @@
-<router-outlet />
+<!-- Fullscreen, fixed bakgrunnsvideo -->
+<div class="bgv">
+  <video class="bgv__vid" src="/videos/VBG1.mp4" <!-- bytt filnavn fritt -->
+    autoplay muted loop playsinline preload="auto" poster="/videos/VBG1.jpg"
+    <!-- bruk .jpg/.png om du har, ellers fjern -->
+    >
+  </video>
+
+  <div class="bgv__overlay"></div>
+  <!-- valgfri -->
+</div>
+
+<!-- resten av appen -->
+<div class="min-h-screen app-shell">
+  <router-outlet />
+</div>

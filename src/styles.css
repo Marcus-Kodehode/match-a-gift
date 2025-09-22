@@ -78,13 +78,13 @@
 @layer components {
   /* Layout */
   .container {
-    @apply max-w-5xl mx-auto px-4;
+    @apply max-w-5xl px-4 mx-auto;
   }
   .step {
-    @apply min-h-screen flex flex-col items-center justify-center gap-10 text-center;
+    @apply flex flex-col items-center justify-center min-h-screen gap-10 text-center;
   }
   .title {
-    @apply text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow;
+    @apply text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl drop-shadow;
   }
   .subtitle {
     @apply text-sm opacity-80;
@@ -92,7 +92,7 @@
 
   /* Kort */
   .card {
-    @apply rounded-2xl p-6 shadow-lg border backdrop-blur-md;
+    @apply p-6 border shadow-lg rounded-2xl backdrop-blur-md;
     background: var(--card-bg);
     border-color: var(--card-br);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
@@ -100,8 +100,7 @@
 
   /* Primær knapp – teal/cyan/blue */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-2xl px-6 py-3
-           select-none border transition relative;
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold transition border select-none rounded-2xl;
     border-color: rgba(255, 255, 255, 0.08);
     color: white;
     background-image: linear-gradient(90deg, var(--grad-1), var(--grad-2), var(--grad-3));
@@ -122,19 +121,17 @@
 
   /* Sekundær (outline glass) */
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 font-semibold
-           border text-slate-100/90 transition;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold transition border rounded-2xl text-slate-100/90;
     border-color: rgba(255, 255, 255, 0.12);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
   }
   .btn-outline:hover {
-    @apply border-cyan-300/50 text-white;
+    @apply text-white border-cyan-300/50;
   }
 
   /* Wizard chips – amber glow ved aktiv */
   .chip {
-    @apply px-7 py-3 rounded-2xl text-sm sm:text-base font-semibold text-white cursor-pointer
-           border transition select-none;
+    @apply py-3 text-sm font-semibold text-white transition border cursor-pointer select-none px-7 rounded-2xl sm:text-base;
     background-image: linear-gradient(90deg, var(--grad-2), var(--grad-3));
     border-color: rgba(255, 255, 255, 0.08);
     box-shadow: 0 6px 18px rgba(59, 130, 246, 0.22);
@@ -157,13 +154,13 @@
 
   /* Inputs (til senere) */
   .field {
-    @apply text-left space-y-1;
+    @apply space-y-1 text-left;
   }
   .label {
-    @apply text-xs uppercase tracking-wide opacity-70;
+    @apply text-xs tracking-wide uppercase opacity-70;
   }
   .input {
-    @apply w-full rounded-xl bg-slate-900/70 border border-slate-700 px-3 py-2 outline-none focus:ring-2 focus:ring-cyan-400/30;
+    @apply w-full px-3 py-2 border outline-none rounded-xl bg-slate-900/70 border-slate-700 focus:ring-2 focus:ring-cyan-400/30;
   }
 
   /* Gift card */
@@ -171,7 +168,7 @@
     @apply card grid grid-cols-[96px,1fr] gap-4 items-center;
   }
   .gift-thumb {
-    @apply w-24 h-24 rounded-xl overflow-hidden border bg-slate-900;
+    @apply w-24 h-24 overflow-hidden border rounded-xl bg-slate-900;
     border-color: rgba(255, 255, 255, 0.1);
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
   }
@@ -191,10 +188,10 @@
 
   /* Progress */
   .progress-wrap {
-    @apply w-full max-w-xl mx-auto px-6;
+    @apply w-full max-w-xl px-6 mx-auto;
   }
   .progress-rail {
-    @apply h-2 rounded-full bg-slate-700/50 overflow-hidden;
+    @apply h-2 overflow-hidden rounded-full bg-slate-700/50;
   }
   .progress-bar {
     @apply h-full;
@@ -204,7 +201,7 @@
 
   /* Empty */
   .empty {
-    @apply opacity-70 text-sm text-center;
+    @apply text-sm text-center opacity-70;
   }
 }
 
@@ -219,4 +216,34 @@
   .shadow-soft {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
   }
+}
+/* fullscreen, fixed, ingen gjentakelse */
+.bgv {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bgv__vid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fyll uten å strekke */
+  object-position: center;
+}
+
+.bgv__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* svak vignett/gradient for lesbarhet – juster/ta bort om du vil */
+  background: radial-gradient(1200px 600px at 50% -10%, rgba(12, 18, 32, 0.25), transparent 60%),
+    linear-gradient(
+      180deg,
+      rgba(11, 18, 32, 0.45),
+      rgba(11, 18, 32, 0.35) 60%,
+      rgba(11, 18, 32, 0.45)
+    );
 }
