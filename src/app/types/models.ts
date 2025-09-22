@@ -1,15 +1,23 @@
 export type Occasion =
   | 'birthday'
   | 'anniversary'
-  | 'christmas'
   | 'graduation'
-  | 'new-baby'
-  | 'just-because';
+  | 'christmas'
+  | 'valentine'
+  | 'mothersday'
+  | 'fathersday'
+  | 'wedding'
+  | 'babyshower'
+  | 'housewarming'
+  | 'retirement'
+  | 'romantic';
+
+export type AgeRange = 'u18' | '18-24' | '25-34' | '35-44' | '45-54' | '55plus';
+export type Gender = 'male' | 'female';
 
 export interface Recipient {
-  relation: 'partner' | 'friend' | 'parent' | 'sibling' | 'coworker' | 'child' | 'other';
-  ageRange?: 'u18' | '18-24' | '25-34' | '35-44' | '45-54' | '55plus';
-  gender?: 'male' | 'female';
+  gender?: Gender;
+  ageRange?: AgeRange;
 }
 
 export interface SuggestionInput {
@@ -22,8 +30,11 @@ export interface GiftIdea {
   title: string;
   description?: string;
   price?: number;
-  tags?: string[];
-  occasions?: Occasion[];
   image?: string;
-  vendorUrl?: string;
+  tags?: string[];
+  suitability: {
+    occasions: Occasion[];
+    genders?: Gender[]; // hvis utelatt = passer alle
+    ages?: AgeRange[]; // hvis utelatt = passer alle
+  };
 }

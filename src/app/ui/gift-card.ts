@@ -32,7 +32,16 @@ import type { GiftIdea } from '../types/models';
           ca. {{ item.price | currency : 'NOK' : 'symbol-narrow' : '1.0-0' }}
         </div>
 
-        <button class="btn btn-sm mt-3" (click)="toggleFav.emit()">Favoritt</button>
+        <div class="flex gap-2 mt-3">
+          <button class="btn btn-sm flex-1" (click)="toggleFav.emit()">Favoritt</button>
+          <a
+            class="btn-outline btn-sm flex-1 text-center"
+            [href]="googleUrl(item.title)"
+            target="_blank"
+            rel="noopener"
+            >Search</a
+          >
+        </div>
       </div>
     </div>
   `,
@@ -40,4 +49,8 @@ import type { GiftIdea } from '../types/models';
 export class GiftCardComponent {
   @Input() item!: GiftIdea;
   @Output() toggleFav = new EventEmitter<void>();
+
+  googleUrl(title: string): string {
+    return `https://www.google.com/search?q=${encodeURIComponent(title)}`;
+  }
 }

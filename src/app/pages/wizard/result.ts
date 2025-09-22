@@ -1,9 +1,9 @@
-// src/app/pages/wizard/result.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { GiftCardComponent } from '../../ui/gift-card';
-import type { GiftIdea } from '../../types/models';
+import type { GiftIdea, AgeRange, Gender, Occasion } from '../../types/models';
+import { SuggestionService } from '../../core/services/suggestion';
 
 @Component({
   selector: 'app-result',
@@ -12,33 +12,20 @@ import type { GiftIdea } from '../../types/models';
   templateUrl: './result.html',
 })
 export class ResultComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sugg: SuggestionService) {}
 
-  state = history.state;
+  state = history.state as { occasion?: Occasion; gender?: Gender; ageRange?: AgeRange };
 
-  items: GiftIdea[] = [
-    {
-      id: 'demo1',
-      title: 'Smartwatch',
-      price: 1990,
-      tags: ['tech'],
-      image: '/assets/demo/watch.jpg',
-    },
-    {
-      id: 'demo2',
-      title: 'Home brewing kit',
-      price: 899,
-      tags: ['hobby'],
-      image: '/assets/demo/brew.jpg',
-    },
-    {
-      id: 'demo3',
-      title: 'Wireless charger',
-      price: 399,
-      tags: ['tech'],
-      image: '/assets/demo/charger.jpg',
-    },
-  ];
+  items: GiftIdea[] = [];
+
+  ngOnInit() {
+    const { occasion, gender, ageRange } = this.state;
+    if (!occasion) {
+      this.restart();
+      return;
+    }
+    this.items = this.sugg.suggest({ occasion, recipient: { gender, ageRange } }, 10);
+  }
 
   restart() {
     this.router.navigateByUrl('/', { replaceUrl: true });
