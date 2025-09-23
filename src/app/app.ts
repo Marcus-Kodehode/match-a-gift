@@ -8,7 +8,7 @@ import { RouterOutlet } from '@angular/router';
   template: `
     <!-- Fullscreen, fixed bilde-background -->
     <div class="bg-img">
-      <img class="bg-img__el" src="/images/BG1.webp" alt="Background" />
+      <img class="bg-img__el" src="/images/BG8.webp" alt="Background" />
       <div class="bg-img__overlay"></div>
     </div>
 
