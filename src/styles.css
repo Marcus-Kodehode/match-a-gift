@@ -214,16 +214,16 @@
   }
 }
 
-/* ---------- Fullscreen video background ---------- */
-/* Legges over body; innhold legges over video med .app-shell */
-.bgv {
+/* ---------- Fullscreen image background ---------- */
+.bg-img {
   position: fixed;
   inset: 0;
-  z-index: 0; /* <- viktig */
+  z-index: 0;
   overflow: hidden;
-  pointer-events: none; /* klikk går til innholdet */
+  pointer-events: none;
 }
-.bgv__vid {
+
+.bg-img__el {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -231,20 +231,21 @@
   object-fit: cover;
   object-position: center;
 }
-.bgv__overlay {
+
+.bg-img__overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(1200px 600px at 50% -10%, rgba(12, 18, 32, 0.25), transparent 60%),
-    linear-gradient(
-      180deg,
-      rgba(11, 18, 32, 0.45),
-      rgba(11, 18, 32, 0.35) 60%,
-      rgba(11, 18, 32, 0.45)
-    );
+  background: linear-gradient(
+    180deg,
+    rgba(11, 18, 32, 0.45),
+    rgba(11, 18, 32, 0.25) 60%,
+    rgba(11, 18, 32, 0.45)
+  );
 }
-/* wrapper rundt router-outlet */
+
+/* App wrapper – innhold ligger over bilde */
 .app-shell {
   position: relative;
-  z-index: 1; /* <- innhold over video */
+  z-index: 1;
 }

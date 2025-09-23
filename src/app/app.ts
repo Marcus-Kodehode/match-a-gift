@@ -6,24 +6,14 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet],
   template: `
-    <!-- Fullscreen, fixed video background -->
-    <div class="bgv">
-      <!-- bytt filnavn når du tester andre -->
-      <video
-        class="bgv__vid"
-        src="/videos/VBG2.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        poster="/videos/VBG1.jpg"
-      ></video>
-      <div class="bgv__overlay"></div>
+    <!-- Fullscreen, fixed bilde-background -->
+    <div class="bg-img">
+      <img class="bg-img__el" src="/images/BG1.webp" alt="Background" />
+      <div class="bg-img__overlay"></div>
     </div>
 
-    <!-- App UI over videoen -->
-    <div class="app-shell min-h-screen bg-grid noise">
+    <!-- App UI -->
+    <div class="app-shell min-h-screen">
       <router-outlet></router-outlet>
     </div>
   `,
