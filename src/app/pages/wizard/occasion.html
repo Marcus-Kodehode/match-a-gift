@@ -1,13 +1,65 @@
-<section class="step bg-grid noise">
-  <app-step-header title="What is the occasion for the gift?" progress="25%"> </app-step-header>
+<section class="step">
+  <app-step-header title="What is the occasion for the gift?" progress="25%"></app-step-header>
 
   <div class="container w-full">
     <div
-      class="mx-auto max-w-5xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 mt-2"
+      class="grid max-w-5xl grid-cols-2 gap-3 mx-auto mt-4 sm:grid-cols-3 lg:grid-cols-4 sm:gap-4"
     >
-      <button class="chip w-full justify-center" *ngFor="let o of occasions" (click)="pick(o.key)">
-        {{ o.label }}
+      <button
+        class="justify-center w-full chip group"
+        *ngFor="let o of occasions"
+        (click)="pick(o.key)"
+        [attr.aria-label]="'Select ' + o.label"
+      >
+        <span class="relative z-10">{{ o.label }}</span>
+
+        <!-- Hover glow effect -->
+        <span class="chip-glow"></span>
       </button>
     </div>
   </div>
 </section>
+
+<style>
+  /* Enhanced chip hover with inner glow */
+  .chip {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chip-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .chip:hover .chip-glow {
+    opacity: 1;
+  }
+
+  /* Subtle scale on active chips */
+  .chip:active {
+    transform: scale(0.97);
+  }
+
+  /* Focus ring enhancement */
+  .chip:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(184, 164, 255, 0.4), 0 8px 24px rgba(139, 154, 255, 0.35);
+  }
+
+  /* Responsive text sizing */
+  @media (max-width: 640px) {
+    .chip {
+      font-size: 0.875rem;
+      padding: 0.625rem 1.25rem;
+    }
+  }
+</style>

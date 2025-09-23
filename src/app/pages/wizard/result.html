@@ -1,31 +1,163 @@
 <section class="step">
-  <h1 class="mb-8 title">We recommend getting this as a gift:</h1>
+  <!-- Hero title med premium gradient og glow -->
+  <div class="mb-8 text-center">
+    <h1 class="title title-hero">
+      We recommend getting this as a <span class="title-accent">gift</span>:
+    </h1>
+  </div>
 
   <!-- Kjønnsregel-melding -->
   <div class="container" *ngIf="errorMsg; else listTpl">
     <div class="text-center card">
+      <div
+        class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full"
+        style="background: rgba(233, 143, 176, 0.2)"
+      >
+        <svg
+          class="w-8 h-8"
+          style="color: #e98fb0"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          />
+        </svg>
+      </div>
       <p class="text-slate-200">{{ errorMsg }}</p>
     </div>
     <div class="text-center">
-      <button class="mt-6 btn" (click)="restart()">Start over</button>
+      <button class="mt-6 btn group" (click)="restart()">
+        <svg
+          class="w-4 h-4 transition-transform duration-500 group-hover:rotate-180"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          />
+        </svg>
+        Start over
+      </button>
     </div>
   </div>
 
   <!-- Liste + paging -->
   <ng-template #listTpl>
     <div class="container">
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
         <app-gift-card *ngFor="let it of items" [item]="it"></app-gift-card>
       </div>
 
-      <div class="flex items-center justify-center gap-3 mt-6" *ngIf="allItems.length > pageSize">
-        <button class="btn-outline" (click)="showPrev()">Previous</button>
-        <button class="btn" (click)="showNext()">Show more</button>
+      <div class="flex items-center justify-center gap-3 mt-8" *ngIf="allItems.length > pageSize">
+        <button class="btn-outline group" (click)="showPrev()">
+          <svg
+            class="w-4 h-4 transition-transform group-hover:-translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Previous
+        </button>
+        <button class="btn group" (click)="showNext()">
+          Show more
+          <svg
+            class="w-4 h-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
       </div>
 
       <div class="text-center">
-        <button class="mt-6 btn-outline" (click)="restart()">Start over</button>
+        <button class="mt-6 btn-outline group" (click)="restart()">
+          <svg
+            class="w-4 h-4 transition-transform duration-500 group-hover:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+            />
+          </svg>
+          Start over
+        </button>
       </div>
     </div>
   </ng-template>
 </section>
+
+<style>
+  /* Hero title med ekstra WOW-faktor */
+  .title-hero {
+    position: relative;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  /* Accent word med gyllen gradient */
+  .title-accent {
+    display: inline-block;
+    background: linear-gradient(
+      135deg,
+      #ffd89b 0%,
+      #f5c563 25%,
+      #ffb347 50%,
+      #ffd89b 75%,
+      #f5c563 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-gold 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(255, 216, 155, 0.5))
+      drop-shadow(0 4px 20px rgba(245, 197, 99, 0.4));
+  }
+
+  @keyframes shimmer-gold {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Extra glow på hover */
+  .title-hero:hover .title-accent {
+    filter: drop-shadow(0 0 40px rgba(255, 216, 155, 0.7))
+      drop-shadow(0 4px 25px rgba(245, 197, 99, 0.6));
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+</style>

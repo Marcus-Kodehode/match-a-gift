@@ -1,8 +1,89 @@
-<!-- src/app/pages/wizard/gender.html -->
 <section class="step">
-  <app-step-header title="What is the recipient’s gender?" progress="66%"></app-step-header>
+  <app-step-header title="What is the recipient's gender?" progress="66%"></app-step-header>
+
   <div class="chip-group">
-    <button class="chip" (click)="pick('male')">Male</button>
-    <button class="chip" (click)="pick('female')">Female</button>
+    <button class="chip group" (click)="pick('male')" [attr.aria-label]="'Select male recipient'">
+      <svg
+        class="w-5 h-5 transition-transform group-hover:scale-110"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+        />
+      </svg>
+      <span>Male</span>
+      <span class="chip-glow"></span>
+    </button>
+
+    <button
+      class="chip group"
+      (click)="pick('female')"
+      [attr.aria-label]="'Select female recipient'"
+    >
+      <svg
+        class="w-5 h-5 transition-transform group-hover:scale-110"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+        />
+      </svg>
+      <span>Female</span>
+      <span class="chip-glow"></span>
+    </button>
   </div>
 </section>
+
+<style>
+  /* Reuse chip enhancements from occasion step */
+  .chip {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .chip-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .chip:hover .chip-glow {
+    opacity: 1;
+  }
+
+  .chip:active {
+    transform: scale(0.97);
+  }
+
+  .chip:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(184, 164, 255, 0.4), 0 8px 24px rgba(139, 154, 255, 0.35);
+  }
+
+  /* Z-index for text and icon above glow */
+  .chip > span,
+  .chip > svg {
+    position: relative;
+    z-index: 10;
+  }
+</style>
