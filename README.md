@@ -37,7 +37,7 @@
 git clone https://github.com/Marcus-Kodehode/Match-A-Gift.git
 cd Match-A-Gift
 2. **Installer avhengigheter**
-```bash
+bash
 npm install
 ```
 
