@@ -415,6 +415,19 @@
   position: relative;
   z-index: 1;
 }
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* under app-innhold, over bakgrunn */
+  pointer-events: none;
+  background-image: url('/images/MBlogo.png');
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  background-size: min(60vw, 900px);
+  opacity: 0.06; /* juster 0.03–0.10 etter smak */
+  filter: blur(0.3px);
+}
 
 /* Accessibility - Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
