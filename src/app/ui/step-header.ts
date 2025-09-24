@@ -1,137 +1,198 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-step-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
-    <!-- Fast/fixed logo-capsule øverst – alltid tilgjengelig -->
-    <header class="fixed top-0 inset-x-0 z-20 pointer-events-none">
-      <div class="mx-auto max-w-5xl px-4 pt-4">
-        <div
-          class="pointer-events-auto inline-flex items-center gap-3 rounded-2xl
-                 border border-white/10 bg-black/25 backdrop-blur-md px-3 py-2
-                 shadow-[0_8px_24px_rgba(0,0,0,0.35)] ring-1 ring-white/10"
-        >
-          <a class="inline-flex items-center gap-3" routerLink="/" aria-label="Go to start">
-            <img
-              src="/images/MAG-logo.png"
-              alt="Match-a-gift"
-              class="h-8 w-auto drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]
-                     [filter:drop-shadow(0_0_16px_rgba(59,130,246,0.20))]"
-            />
-            <span class="hidden sm:inline text-white/95 font-semibold tracking-wide">
-              match-a-gift
-            </span>
-          </a>
-
-          <span
-            class="ml-2 hidden md:inline-block h-1.5 w-16 rounded-full
-                   bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500"
-            aria-hidden="true"
-          ></span>
+    <!-- Premium logo med Aurora Night effekter -->
+    <header class="fixed z-30 top-3 left-1/2 -translate-x-1/2 pointer-events-none">
+      <a routerLink="/" aria-label="Go to start" class="pointer-events-auto block logo-container">
+        <div class="logo-wrapper">
+          <img src="/images/MAG-logo.png" alt="Match-a-gift" class="mag-logo" />
+          <!-- Animated glow rings -->
+          <div class="glow-ring-1"></div>
+          <div class="glow-ring-2"></div>
         </div>
-      </div>
+      </a>
     </header>
-
-    <!-- Midt-innhold: progress + tittel (kan slås av per side) -->
-    <div class="progress-wrap" *ngIf="showTitle || showProgress">
-      <div class="progress-rail relative" *ngIf="showProgress">
-        <div
-          class="progress-bar transition-all duration-500 ease-out"
-          [style.width]="progress"
-        ></div>
-      </div>
-
-      <h1 class="title title-hero mt-6" *ngIf="showTitle">
-        <ng-container *ngIf="getTitleParts() as parts">
-          {{ parts.main }} <span class="title-accent">{{ parts.accent }}</span>
-        </ng-container>
-      </h1>
-    </div>
   `,
   styles: [
     `
-      /* Hero tittel – samme look, men uten å spamme globale styles */
-      .title-hero {
+      .logo-container {
         position: relative;
-        font-size: clamp(1.75rem, 4vw, 3rem);
-        line-height: 1.2;
-        letter-spacing: -0.03em;
-      }
-      .title-accent {
         display: inline-block;
-        background: linear-gradient(
-          135deg,
-          #ffd89b 0%,
-          #f5c563 25%,
-          #ffb347 50%,
-          #ffd89b 75%,
-          #f5c563 100%
-        );
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: shimmer-gold 3s ease-in-out infinite;
-        filter: drop-shadow(0 0 30px rgba(255, 216, 155, 0.5))
-          drop-shadow(0 4px 20px rgba(245, 197, 99, 0.4));
-      }
-      @keyframes shimmer-gold {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
       }
 
-      .title-hero:hover .title-accent {
-        filter: drop-shadow(0 0 40px rgba(255, 216, 155, 0.7))
-          drop-shadow(0 4px 25px rgba(245, 197, 99, 0.6));
-        transform: scale(1.05);
-        transition: all 0.3s ease;
-      }
-
-      .progress-bar {
+      .logo-wrapper {
         position: relative;
-        animation: pulse-glow 2s ease-in-out infinite;
+        display: inline-block;
       }
-      @keyframes pulse-glow {
+
+      /* Enhanced logo med Aurora Night glow */
+      .mag-logo {
+        height: clamp(52px, 7vw, 100px);
+        width: auto;
+        position: relative;
+        z-index: 10;
+
+        /* Multi-layer Aurora glow */
+        filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.5))
+          drop-shadow(0 0 40px rgba(79, 217, 217, 0.4)) /* aurora-teal */
+          drop-shadow(0 0 60px rgba(155, 123, 222, 0.25)) /* aurora-purple */
+          drop-shadow(0 0 80px rgba(245, 197, 99, 0.15)); /* aurora-gold */
+
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        image-rendering: crisp-edges;
+      }
+
+      /* Premium hover effect */
+      .logo-container:hover .mag-logo {
+        transform: translateY(-2px) scale(1.05);
+        filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 0 50px rgba(79, 217, 217, 0.6))
+          drop-shadow(0 0 70px rgba(155, 123, 222, 0.4))
+          drop-shadow(0 0 90px rgba(245, 197, 99, 0.3));
+      }
+
+      /* Animated glow rings */
+      .glow-ring-1,
+      .glow-ring-2 {
+        position: absolute;
+        inset: -20px;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      .glow-ring-1 {
+        background: radial-gradient(
+          circle,
+          rgba(79, 217, 217, 0.15) 0%,
+          rgba(79, 217, 217, 0.08) 40%,
+          transparent 70%
+        );
+        animation: pulse-ring-1 3s ease-in-out infinite;
+      }
+
+      .glow-ring-2 {
+        inset: -30px;
+        background: radial-gradient(
+          circle,
+          rgba(155, 123, 222, 0.12) 0%,
+          rgba(155, 123, 222, 0.06) 35%,
+          transparent 65%
+        );
+        animation: pulse-ring-2 4s ease-in-out infinite 0.5s;
+      }
+
+      /* Hover enhancement på rings */
+      .logo-container:hover .glow-ring-1 {
+        opacity: 0.8;
+        animation-duration: 2s;
+      }
+
+      .logo-container:hover .glow-ring-2 {
+        opacity: 0.7;
+        animation-duration: 2.5s;
+      }
+
+      /* Keyframe animasjoner */
+      @keyframes pulse-ring-1 {
         0%,
         100% {
-          filter: brightness(1) drop-shadow(0 0 16px rgba(79, 217, 217, 0.4));
+          transform: scale(1);
+          opacity: 0.6;
         }
         50% {
-          filter: brightness(1.1) drop-shadow(0 0 24px rgba(79, 217, 217, 0.6));
+          transform: scale(1.1);
+          opacity: 0.8;
         }
       }
 
+      @keyframes pulse-ring-2 {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.4;
+        }
+        50% {
+          transform: scale(1.15);
+          opacity: 0.6;
+        }
+      }
+
+      /* Subtle background halo - større og mer intense */
+      .logo-container::before {
+        content: '';
+        position: absolute;
+        inset: -25px -30px;
+        border-radius: 50%;
+        background: radial-gradient(
+          ellipse 120% 100% at 50% 50%,
+          rgba(79, 217, 217, 0.12) 0%,
+          rgba(155, 123, 222, 0.08) 40%,
+          rgba(245, 197, 99, 0.04) 70%,
+          transparent 100%
+        );
+        filter: blur(15px);
+        z-index: -1;
+        transition: all 0.4s ease;
+      }
+
+      .logo-container:hover::before {
+        background: radial-gradient(
+          ellipse 140% 120% at 50% 50%,
+          rgba(79, 217, 217, 0.18) 0%,
+          rgba(155, 123, 222, 0.12) 40%,
+          rgba(245, 197, 99, 0.08) 70%,
+          transparent 100%
+        );
+        filter: blur(20px);
+      }
+
+      /* Focus state for accessibility */
+      .logo-container:focus-visible {
+        outline: none;
+      }
+
+      .logo-container:focus-visible .mag-logo {
+        filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.6))
+          drop-shadow(0 0 50px rgba(79, 217, 217, 0.7))
+          drop-shadow(0 0 70px rgba(155, 123, 222, 0.5))
+          drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+      }
+
+      /* Respekt for redusert bevegelse */
       @media (prefers-reduced-motion: reduce) {
-        .title-accent,
-        .progress-bar {
+        .mag-logo,
+        .logo-container::before,
+        .glow-ring-1,
+        .glow-ring-2 {
+          transition: none !important;
           animation: none !important;
+        }
+      }
+
+      /* Mobile optimalisering */
+      @media (max-width: 640px) {
+        .glow-ring-1,
+        .glow-ring-2 {
+          inset: -15px;
+        }
+
+        .glow-ring-2 {
+          inset: -20px;
+        }
+
+        .logo-container::before {
+          inset: -20px -25px;
+          filter: blur(12px);
         }
       }
     `,
   ],
 })
-export class StepHeaderComponent {
-  /** Tittel-tekst (vi gjør siste ord til accent) */
-  @Input() title = '';
-  /** f.eks. "25%" */
-  @Input() progress = '0%';
-
-  /** Skru av/på deler per side */
-  @Input() showTitle = true;
-  @Input() showProgress = true;
-
-  getTitleParts(): { main: string; accent: string } {
-    const words = (this.title || '').trim().split(' ');
-    if (words.length <= 1) return { main: '', accent: this.title || '' };
-    const accent = words.pop() || '';
-    return { main: words.join(' '), accent };
-  }
-}
+export class StepHeaderComponent {}
