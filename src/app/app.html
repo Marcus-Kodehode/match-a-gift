@@ -1,13 +1,10 @@
-<!-- Fullscreen fixed video background -->
-<div class="bgv">
-  <video class="bgv__vid" src="/videos/VBG1.mp4" <!-- swap file here when you test others -->
-    autoplay muted loop playsinline preload="auto" poster="/videos/VBG1.jpg" >
-  </video>
-
-  <div class="bgv__overlay"></div>
+<!-- Fullscreen, fixed bilde-background -->
+<div class="bg-img">
+  <img class="bg-img__el" src="/images/BG9.webp" alt="Background" />
+  <div class="bg-img__overlay"></div>
 </div>
 
-<!-- All app UI lives above the video -->
+<!-- App UI -->
 <div class="min-h-screen app-shell">
   <router-outlet></router-outlet>
 </div>
