@@ -1,59 +1,103 @@
-# MatchAGift
+<div align="center">
+  <p>
+    <img src="/public/images/MBlogo.png" alt="Personal Logo" width="150" />
+  </p>
+  <p>
+    <img src="/public/images/MAG-logo.png" alt="Match-A-Gift Logo" width="150" />
+  </p>
+  
+  # Match-A-Gift
+  
+  > En moderne gavehjelper som guider brukeren til den perfekte gaven – bygget med Angular og Tailwind CSS
+  
+  [![Angular](https://img.shields.io/badge/Angular-18-dd1b16.svg)](https://angular.dev)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8.svg)](https://tailwindcss.com)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)](https://www.typescriptlang.org)
+  [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+</div>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+## ✨ Hovedfunksjoner
 
-## Development server
+- 🎁 Intelligent gaveforslagssystem
+- � Personalisert gavetilpasning
+- 🌓 Moderne glass-morfisme design
+- 💝 Favorittmerking av gaveforslag
+- 📱 Responsivt design for alle enheter
 
-To start a local development server, run:
+## 🖼️ Skjermbilde
 
+<div align="center">
+  <img src="/public/images/screenshot.png" alt="Match-A-Gift Screenshot" width="800" />
+</div>
+
+## 🚀 Kom i Gang
+
+1. **Klone prosjektet**
 ```bash
-ng serve
+git clone https://github.com/Marcus-Kodehode/Match-A-Gift.git
+cd Match-A-Gift
+2. **Installer avhengigheter**
+```bash
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+3. **Start utviklingsserver**
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+4. **Åpne nettleseren**
+```
+http://localhost:4200
 ```
 
-## Building
+## 🛠️ Bygget Med
 
-To build the project run:
+- **[Angular](https://angular.dev)** - Frontend rammeverk
+- **[Tailwind CSS](https://tailwindcss.com)** - Utility-first CSS rammeverk
+- **[TypeScript](https://www.typescriptlang.org)** - Programmeringsspråk
+- **[Angular Signals](https://angular.dev/guide/signals)** - Tilstandshåndtering
 
-```bash
-ng build
-```
+## 📚 Dokumentasjon
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Prosjektet inneholder omfattende dokumentasjon i `/docs`-mappen:
 
-## Running unit tests
+- [Applikasjonsoversikt](docs/app-summary.md) - Detaljert systemdokumentasjon
+- [Mappestruktur](docs/folder-structure.md) - Prosjektorganisering
+- [Datasett Eksempel](docs/dataset-example.md) - Datastruktur og format
+- [Stilguide](docs/stylesheet.md) - Design og stiler
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+🧪 Testing
+## 🧪 Testing
 
 ```bash
-ng e2e
+# Kjør enhetstester
+npm test
+
+# Kjør med coverage
+npm test -- --coverage
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📦 Bygg for Produksjon
 
-## Additional Resources
+```bash
+npm run build
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Bygget vil være tilgjengelig i `dist/`-mappen.
+
+## 🤝 Bidrag
+
+Bidrag, problemer og feature-forespørsler er velkomne! Se [CONTRIBUTING.md](CONTRIBUTING.md) for hvordan du kan bidra.
+
+## 📝 Lisens
+
+Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](LICENSE) filen for detaljer.
+
+---
+
+<div align="center">
+  <i>"Giving is not just about making a donation. It's about making a difference."</i>
+  <br>
+  <sub>Laget med ❤️ av MaBo Developments</sub>
+</div> ```
