@@ -43,7 +43,7 @@ npm install
 
 3. **Start utviklingsserver**
 ```bash
-npm start
+ng serve
 ```
 
 4. **Åpne nettleseren**
