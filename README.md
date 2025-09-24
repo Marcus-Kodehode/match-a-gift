@@ -100,4 +100,4 @@ Dette prosjektet er lisensiert under MIT-lisensen - se [LICENSE](LICENSE) filen 
   <i>"Giving is not just about making a donation. It's about making a difference."</i>
   <br>
   <sub>Laget med ❤️ av MaBo Developments</sub>
-</div> ```
+</div>
