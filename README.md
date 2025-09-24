@@ -27,7 +27,7 @@
 ## 🖼️ Skjermbilde
 
 <div align="center">
-  <img src="/public/images/screenshot.png" alt="Match-A-Gift Screenshot" width="800" />
+  <img src="/public/images/match-a-gift-screenshot.png" alt="Match-A-Gift Screenshot" width="800" />
 </div>
 
 ## 🚀 Kom i Gang
