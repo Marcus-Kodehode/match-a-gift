@@ -10,7 +10,7 @@
   
   > En moderne gavehjelper som guider brukeren til den perfekte gaven – bygget med Angular og Tailwind CSS
   
-  [![Angular](https://img.shields.io/badge/Angular-18-dd1b16.svg)](https://angular.dev)
+  [![Angular](https://img.shields.io/badge/Angular-20-dd1b16.svg)](https://angular.dev)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8.svg)](https://tailwindcss.com)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6.svg)](https://www.typescriptlang.org)
   [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -18,8 +18,7 @@
 
 ## ✨ Hovedfunksjoner
 
-- 🎁 Intelligent gaveforslagssystem
-- � Personalisert gavetilpasning
+- 🎁 Gaveforslag ut fra anledning, alder og kjønn
 - 🌓 Moderne glass-morfisme design
 - 💝 Favorittmerking av gaveforslag
 - 📱 Responsivt design for alle enheter
