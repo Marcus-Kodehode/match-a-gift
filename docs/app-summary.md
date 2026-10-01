@@ -5,23 +5,19 @@ Match-A-Gift er en moderne webapplikasjon som hjelper brukere med å finne perfe
 ## 🎯 Hovedfunksjonalitet
 
 ### 1. Gavevelger
-- Interaktiv veiviser for å finne gavetips
-- Filtrering basert på:
-  - Alder
-  - Kjønn
-  - Anledning
-- Intelligent forslagsgenerering
+- Veiviser i tre steg for å finne gavetips
+- Forslagene hentes fra en fast gavekatalog og filtreres på anledning,
+  med alder og kjønn som tilpasning
 
 ### 2. Favoritter
-- Lagring av favorittgaver
-- Personlig ønskeliste
-- Deling av favoritter
+- Favorittmerking av gavetips
+- Favorittene lagres lokalt i nettleseren (LocalStorage)
 
 ### 3. Brukergrensesnitt
 - Moderne glass-morfisme design
 - Responsivt layout
 - Animerte overganger
-- Dynamiske bakgrunner
+- Bakgrunnsbilde i WebP
 
 ## 🛠️ Teknisk Implementasjon
 
@@ -36,32 +32,35 @@ Match-A-Gift er en moderne webapplikasjon som hjelper brukere med å finne perfe
 - **TypeScript Interfaces**: Streng typing
 
 ### Ytelse
-- **Lazy Loading**: Optimalisert lasting
 - **WebP Bilder**: Moderne bildeformat
 - **Standalone Components**: Forbedret byggetid
 
 ## 📊 Datamodeller
 
-### Gift (Gave)
+Se `src/app/types/models.ts`.
+
+### GiftIdea (gavetips)
 ```typescript
-interface Gift {
+interface GiftIdea {
   id: string;
-  name: string;
-  description: string;
-  price: PriceRange;
-  ageRanges: AgeRange[];
-  genders: Gender[];
-  occasions: Occasion[];
-  imageUrl?: string;
+  title: string;
+  description?: string;
+  price?: number;
+  image?: string;
+  tags?: string[];
+  suitability: {
+    occasions: Occasion[];
+    genders?: Gender[]; // utelatt = passer alle
+    ages?: AgeRange[]; // utelatt = passer alle
+  };
 }
 ```
 
-### Filters (Filtre)
+### SuggestionInput (valgene i veiviseren)
 ```typescript
-interface GiftFilters {
-  ageRange: AgeRange;
-  gender: Gender;
+interface SuggestionInput {
   occasion: Occasion;
+  recipient: { gender?: Gender; ageRange?: AgeRange };
 }
 ```
 
@@ -73,9 +72,8 @@ interface GiftFilters {
    - Velg anledning
 
 2. **Prosessering**
-   - Filtrer gaver
-   - Sorter etter relevans
-   - Generer forslag
+   - Filtrer gavekatalogen på anledning
+   - Begrens til et fast antall forslag
 
 3. **Presentasjon**
    - Vis gavetips

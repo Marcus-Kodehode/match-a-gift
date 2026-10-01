@@ -33,8 +33,6 @@ public/
 │   ├── BG*.webp     # Bakgrunnsbilder
 │   ├── MAG-logo.png # Applikasjonslogo
 │   └── MBlogo.png   # Utviklerlogo
-└── videos/          # Videofiler
-    └── VBG*.mp4     # Videobakgrunner
 ```
 
 ### `/src`
